@@ -1,0 +1,136 @@
+/* =========================================================
+   style.css  -  loaded AFTER Bootstrap so it can override it
+   ========================================================= */
+
+/* ---------- Small helpers for the Bootstrap part of the page ---------- */
+html { scroll-behavior: smooth; }
+section[id], header[id] { scroll-margin-top: 70px; } /* sticky navbar should not cover headings */
+
+.hero-art {
+  background: linear-gradient(135deg, #f6c453, #c8782a);
+  min-height: 260px;
+}
+.hero-emoji { font-size: 6rem; }
+
+.about-art {
+  background: linear-gradient(135deg, #5b3a29, #2b1b12);
+}
+
+.menu-art {
+  font-size: 4rem;
+  text-align: center;
+  padding: 1.5rem 0;
+}
+.menu-art--1 { background: #f3e1c9; }
+.menu-art--2 { background: #ead3b5; }
+.menu-art--3 { background: #dfe9f0; }
+.menu-art--4 { background: #f8e3b0; }
+.menu-art--5 { background: #f4d6df; }
+.menu-art--6 { background: #d9ecd2; }
+
+
+/* =========================================================
+   TASK 1  -  SERVICES SECTION, made responsive BY HAND
+   - own CSS only (CSS Grid + Flexbox), no Bootstrap classes
+   - MOBILE-FIRST: base styles = phone, @media (min-width) adds changes
+   - no fixed widths and no absolute positioning
+   ========================================================= */
+
+/* ----- BASE STYLES (phone, below 768px) ----- */
+.services {
+  background: #fff8ee;
+  padding: 2rem 1rem;               /* small spacing on phone */
+}
+
+.services__wrap {
+  max-width: 1200px;                /* only a limit: the block can still shrink */
+  margin: 0 auto;
+}
+
+.services__title {
+  font-size: 1.6rem;                /* small heading on phone */
+  text-align: center;
+  margin: 0 0 0.5rem;
+}
+
+.services__intro {
+  text-align: center;
+  margin: 0 0 1.5rem;
+  color: #6b5a4a;
+}
+
+/* Grid: 1 item per row on a phone */
+.services__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+/* Each item: icon on the LEFT, text on the right (row layout) */
+.service {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  background: #ffffff;
+  border: 1px solid #ecd9bd;
+  border-radius: 12px;
+  padding: 1rem;
+}
+
+.service__icon {
+  font-size: 2rem;
+  flex-shrink: 0;
+}
+
+.service__name {
+  font-size: 1.1rem;
+  margin: 0 0 0.25rem;
+}
+
+.service__desc {
+  margin: 0;
+  color: #6b5a4a;
+}
+
+/* ----- BREAKPOINT 1: tablet, from 768px -----
+   * 2 items per row
+   * heading becomes bigger
+   * more spacing */
+@media (min-width: 768px) {
+  .services {
+    padding: 3rem 2rem;
+  }
+  .services__title {
+    font-size: 2.2rem;
+  }
+  .services__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+}
+
+/* ----- BREAKPOINT 2: laptop, from 1100px -----
+   * 3 items per row
+   * item layout changes: icon goes ABOVE the text (column), text is centered
+   * heading is even bigger, spacing is bigger */
+@media (min-width: 1100px) {
+  .services {
+    padding: 4rem 2rem;
+  }
+  .services__title {
+    font-size: 2.8rem;
+  }
+  .services__grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+  .service {
+    flex-direction: column;         /* layout change, not only a size change */
+    text-align: center;
+    padding: 1.5rem;
+  }
+  .service__icon {
+    font-size: 2.8rem;
+  }
+}
